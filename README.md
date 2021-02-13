@@ -12,9 +12,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 2. Install TailwindCSS plugins(Optional):
 
-  * npm i @tailwindcss/typography
+  * `npm i @tailwindcss/typography`
 
-  * npm i @tailwindcss/forms
+  * `npm i @tailwindcss/forms`
 
 3. Create a TailwindCSS configuration file in the workspace or project root. Name that configuration file `tailwind.config.js`
 
