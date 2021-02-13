@@ -1,4 +1,4 @@
-# Tw
+# Angular Tailwind
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.0.
 
@@ -6,22 +6,68 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+1. Install with `npm install -D tailwindcss`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2. Install TailwindCSS plugins(Optional):
 
-## Build
+  * npm i @tailwindcss/typography
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  * npm i @tailwindcss/forms
 
-## Running unit tests
+3. Create a TailwindCSS configuration file in the workspace or project root. Name that configuration file `tailwind.config.js`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+It should look like this:
 
-## Running end-to-end tests
+```javascript
+module.exports = {
+    prefix: '',
+    purge: {
+      content: [
+        './src/**/*.{html,ts}',
+      ]
+    },
+    darkMode: 'class', // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {
+      extend: {},
+    },
+    plugins: [require('@tailwindcss/forms'),require('@tailwindcss/typography')],
+};
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+4. In your styles.scss file add the following TailwindCSS imports
 
-## Further help
+```css
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+if you are using CSS not SCSS, your file should look like this:
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+<h2>Making sure TailwindCSS in Angular is working</h2>
+
+
+Go to any of you components and write the following:
+
+```html
+<button
+  class="py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-400">Hello</button>
+```
+
+
+Now run `ng serve`, you should see the following button
+
+![angular tailwindcss](https://dev-to-uploads.s3.amazonaws.com/i/tvvo9pqx7ua7yc2kjzhz.png)
+
+
+<h2>To learn more about Angular and TailwindCSS</h2>
+https://dev.to/angular/setup-tailwindcss-in-angular-the-easy-way-1i5l
