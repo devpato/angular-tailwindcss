@@ -70,6 +70,35 @@ Now run `ng serve`, you should see the following button
 
 ![angular tailwindcss](https://dev-to-uploads.s3.amazonaws.com/i/tvvo9pqx7ua7yc2kjzhz.png)
 
+<h2>How to purge TailwindCSS in Production</h2>
+
+If we don't purge, our CSS can be very heavy due to all the CSS classes TailwindCSS adds for you. If you purge, all the unused classes will be removed.
+
+The way I figured to do purging in Angular 11.2.0 are the following ways:
+
+A) Add this to your building SCRIPT `NODE_ENV=production ng build --prod`
+
+B) I liked this one better. In your `tailwind.config.js file` you can set the `enabled` property inside of the `purge` property to `true`
+
+```javascript
+....
+prefix: '',
+    purge: {
+      enabled: true,
+      content: [
+        './src/**/*.{html,ts}',
+      ]
+    },
+....
+```
+Then you can run `ng build --prod` and you will see your bundle since getting smaller.
+
+<strong> Before purging</strong>
+![tailwindcss purging](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dm6zto6znswiot65a7lp.png)
+
+<strong> After purging</strong>
+![purging tailwind](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jemgahtbi11mwfbkdfyu.png)
+
 
 <h2>To learn more about Angular and TailwindCSS</h2>
 https://dev.to/angular/setup-tailwindcss-in-angular-the-easy-way-1i5l
