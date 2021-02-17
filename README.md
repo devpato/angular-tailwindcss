@@ -94,9 +94,11 @@ prefix: '',
 Then you can run `ng build --prod` and you will see your bundle since getting smaller.
 
 <strong> Before purging</strong>
+<br/>
 ![tailwindcss purging](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dm6zto6znswiot65a7lp.png)
 
 <strong> After purging</strong>
+<br/>
 ![purging tailwind](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jemgahtbi11mwfbkdfyu.png)
 
 
