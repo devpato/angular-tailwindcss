@@ -76,9 +76,19 @@ If we don't purge, our CSS can be very heavy due to all the CSS classes Tailwind
 
 The way I figured to do purging in Angular 11.2.0 are the following ways:
 
-A) Add this to your building SCRIPT `NODE_ENV=production ng build --prod`
+A)  This is my preferred way. Add this to your building SCRIPT `NODE_ENV=production ng build --prod`
+and your tailwind.config.js file should look like this.
 
-B) I liked this one better. In your `tailwind.config.js file` you can set the `enabled` property inside of the `purge` property to `true`
+```javascript
+purge: {
+      enabled: process.env.NODE_ENV === 'production',
+      content: [
+        './src/**/*.{html,ts}',
+      ]
+    },
+```
+
+B) In your `tailwind.config.js file` you can set the `enabled` property inside of the `purge` property to `true`
 
 ```javascript
 ....
@@ -94,11 +104,9 @@ prefix: '',
 Then you can run `ng build --prod` and you will see your bundle since getting smaller.
 
 <strong> Before purging</strong>
-<br/>
 ![tailwindcss purging](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dm6zto6znswiot65a7lp.png)
 
 <strong> After purging</strong>
-<br/>
 ![purging tailwind](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jemgahtbi11mwfbkdfyu.png)
 
 
